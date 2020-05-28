@@ -20,7 +20,7 @@ def verify_hmac(secret, body, shopify_hmac):
 
 @csrf_exempt
 @api_view(['POST'])
-def cart_webhook(request):
+def post_webhook(request):
     shopify_hmac = request.headers.get('X-Shopify-Hmac-Sha256')
     if hmac_is_valid(settings.SHOPIFY_WEBHOOK_SIGNED_KEY, request.body, shopify_hmac):
         print('valid')
